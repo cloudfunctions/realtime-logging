@@ -1,0 +1,25 @@
+{
+  "name": "realtime_service",
+  "version": "1.0.0",
+  "description": "Realtime service for log, dashboard, ..etc",
+  "author": "",
+  "license": "ISC",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@socket.io/admin-ui": "^0.1.1",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.11.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "socket.io": "^4.0.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}

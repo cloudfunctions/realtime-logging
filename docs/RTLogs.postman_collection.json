@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "ae843fd8-eeea-4407-8734-96e2482dc3c7",
+		"name": "RTLogs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth - Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_id\": \"client_1\",\n    \"client_secret\": \"cadb2668033deb03245e79a4ee069075\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/access_token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logs - Push a log",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"environment\": \"local\",\n    \"type\": \"error\",\n    \"message\": \"Error connect to database\",\n    \"data\": \"[2021-06-29 14:17:30] local.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) (SQL: insert into `oauth_clients` (`user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `updated_at`, `created_at`) values (?, Laravel Personal Access Client, Uo6Wcim4KvmuDz36EisbL8G4qpduP0hp5OuEVALg, ?, http://localhost, 1, 0, 0, 2021-06-29 14:17:30, 2021-06-29 14:17:30))\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/logs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"logs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

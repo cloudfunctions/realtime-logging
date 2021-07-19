@@ -1,0 +1,32 @@
+version: '3'
+
+services: 
+
+    socket:
+        build: 
+            context: ./socket
+        ports: 
+            - 4000:4000
+        environment: 
+            - NODE_ENV=development
+        env_file: ./socket/src/.env.local
+        volumes: 
+            - ./socket/src:/usr/src/app
+
+    admin:
+        build: 
+            context: ./admin
+        volumes: 
+            - ./admin/htdocs:/usr/share/nginx/html
+            - ./admin/nginx/nginx.conf:/etc/nginx/conf.d/default.template:ro
+        ports: 
+            - 4001:80
+
+    dashboard:
+        build: 
+            context: ./dashboard
+        volumes: 
+            - ./dashboard/htdocs:/usr/share/nginx/html
+            - ./dashboard/nginx/nginx.conf:/etc/nginx/conf.d/default.template:ro
+        ports: 
+            - 4002:80

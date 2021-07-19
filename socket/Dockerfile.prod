@@ -1,0 +1,17 @@
+FROM node:16
+ENV NODE_ENV=production
+
+# set the working directory in the container
+WORKDIR /usr/src/app
+
+# copy the content of the local src directory to the working directory
+COPY ./src .
+
+# install depenencies
+RUN npm install --production
+
+# expose application port
+EXPOSE 80
+
+# Run application
+CMD [ "node", "server.js" ]
